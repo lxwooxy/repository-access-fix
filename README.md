@@ -14,7 +14,7 @@ You'll need [GitHub CLI](https://docs.github.com/en/education/manage-coursework-
 
 We're going to be [adding collaborators](https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#add-a-repository-collaborator) using the API.
 
-You'll also want to find the affected assignment's ID, it was a 5 digit number:
+### You'll also want to find the affected assignment's ID, it was a 5 digit number:
 ```bash
 gh classroom assignment
 ```
@@ -27,6 +27,7 @@ gh classroom assignments
 Keep that lil number safe we'll need it in a second.
 
 ## In this repo:
+### You'll have to change some stuff:
 - ```add-collaborator.py``` (probably dont have to change anything here)
 - ```find-collaborator.sh``` (update the format of the repo naming convention)
     - Under ```#Check if the user is a collaborator```, replace ```{repo}``` and ```{projectname}``` with your own organization naming style
@@ -76,7 +77,7 @@ echo "wait" >> ${output_file}
 echo "The commands have been written to ${output_file}. You can run it to grant write access."
 ```
 
-Then, call
+### Then, call
 ```./find-collaborator.sh```
 
 It should output the affected users. In our case, some were affected, and others not.
@@ -89,7 +90,7 @@ wait
 ```
 Where each line corresponds to one user about to get their entire life changed, or at least get access to their on repository.
 
-Run ```./grant-write-access.sh``` – It may take a second, I was lowkey pressed because I didn't know if I was breaking everything. If you get a permission denied error: do 
+### Run ```./grant-write-access.sh``` – It may take a second, I was lowkey pressed because I didn't know if I was breaking everything. If you get a permission denied error: do 
 ```bash
 chmod +x grant-write-access.sh
 ```
