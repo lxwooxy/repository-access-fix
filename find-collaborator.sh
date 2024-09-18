@@ -1,5 +1,7 @@
 #!/bin/bash
 assignmentID="$1"
+repo_name="my_org" # Change this to the organization name
+project_name="my_project" # Change this to the project title
 output_file="grant-write-access.sh"
 
 if [ -z "${assignmentID}" ]; then
@@ -17,18 +19,18 @@ while : ; do
   command="gh classroom accepted-assignments -a ${assignmentID} --per-page 30 --page $i"
   echo "Running: ${command}"
   
-  # Capture the accepted repositories list and filter it to only lines with repository URLs
-  accepted_repos=$(eval "${command}" | awk '{if ($6 ~ /https/) print $5, $6}')
-  [[ -z "${accepted_repos}" ]] && break
+  # Capture the accepted orgsitories list and filter it to only lines with orgsitory URLs
+  accepted_orgs=$(eval "${command}" | awk '{if ($6 ~ /https/) print $5, $6}')
+  [[ -z "${accepted_orgs}" ]] && break
   
-  # Process each line (which should now be "username repo_url")
+  # Process each line (which should now be "username org_url")
   while read -r user repo; do
     # Check if the user is a collaborator
-    check_command="gh api /repos/{repo}/{projectname}-${user}/collaborators/${user}"
+    check_command="gh api /repos/${repo_name}/${project_name}-${user}/collaborators/${user}"
     
     # If the user is not a collaborator, add the gh api command to the output file
     if ! eval "${check_command}" >/dev/null 2>&1; then
-      echo "gh api -X PUT /repos/{repo}/{projectname}-${user}/collaborators/${user} &" >> ${output_file}
+      echo "gh api -X PUT /repos/${repo_name}/${project_name}-${user}/collaborators/${user} &" >> ${output_file}
       echo "${user} is not a collaborator on their own repo (${repo})"
     fi
   done <<< "${accepted_repos}"

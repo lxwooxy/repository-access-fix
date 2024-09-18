@@ -24,8 +24,7 @@ gh classroom assignment
 In this repo:
 - ```add-collaborator.py``` (probably dont have to change anything here)
 - ```find-collaborator.sh``` (update the format of the repo naming convention)
-    - Under ```#Check if the user is a collaborator```, replace ```{repo}``` and ```{projectname}``` with your own organization naming style
-    - Same for the ```echo gh api -X PUT...``` line
+    - Change the values of ```repo_name``` and ```project_name``` to match your project template title
 ```bash
 #!/bin/bash
 assignmentID="$1"
