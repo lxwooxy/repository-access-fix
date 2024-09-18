@@ -5,23 +5,29 @@ Scripts to add students as collaborators back to their own Github Repositories, 
 
 When accepting an assignment on GitHub Classroom, students got a "Repository Access Issue" error, stating they no longer have access to their assignment repository. And to contact their teacher for support. But who are the teachers going to contact? Who is the me going to contact? (Thanks to the github community that also complained about this so I knew it wasn't just my fault)
 
-## The tea: 
-### The repositories were actually created, and still there in the organization. The students were just not collaborators on them.
+## The Tea: 
+### The repositories were actually created, and still there in the organization. The students were just not collaborators on them. How convenient.
 
 With < 10 students, it would probably not suck to add them back manually to give them write access to their own repositories. But everyone's studying CS nowadays. These are scripts to fix. I found most of this online/on other forums and modified it to get it to work for us. If you somehow find this first, hope it helps.
 
-You'll need [GitHub CLI](https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/using-github-classroom-with-github-cli)
+You'll need [GitHub CLI](https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/using-github-classroom-with-github-cli), maybe you're like me and [have to download it](https://github.com/cli/cli#installation).
 
-Maybe you're like me and [have to download it](https://github.com/cli/cli#installation)
+We're going to be [adding collaborators](https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#add-a-repository-collaborator) using the API.
 
-We're going to be [adding collaborators](https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#add-a-repository-collaborator) using the API
-
-You'll also want to find the affected assignment's ID, it was a lil 5 digit number:
+### You'll also want to find the affected assignment's ID, it was a 5 digit number:
 ```bash
 gh classroom assignment
 ```
+Use the arrow keys to navigate to the right assignment if you have a bunch of classrooms and assignments.
 
-In this repo:
+Or you can also do:
+```bash
+gh classroom assignments
+```
+Keep that lil number safe we'll need it in a second.
+
+## In this repo:
+### You'll have to change some stuff:
 - ```add-collaborator.py``` (probably dont have to change anything here)
 - ```find-collaborator.sh``` (update the format of the repo naming convention)
     - Change the values of ```repo_name``` and ```project_name``` to match your project template title
@@ -70,17 +76,24 @@ echo "wait" >> ${output_file}
 echo "The commands have been written to ${output_file}. You can run it to grant write access."
 ```
 
-Then, call
-```./find-collaborator.sh```
+### Then, call ```./find-collaborator.sh```
 
 It should output the affected users. In our case, some were affected, and others not.
 
-A new file, ```grant-write-access.sh``` should be created. 
+A new file, ```grant-write-access.sh``` should be created. If you peek in it it should be something like:
+```
+gh api -X PUT /repos/{repo}/{projectname}-${user}/collaborators/${user} &
+gh api -X PUT /repos/{repo}/{projectname}-${user}/collaborators/${user} &
+wait
+```
+Where each line corresponds to one user about to get their entire life changed, or at least get access to their on repository.
 
-Run ```./grant-write-access.sh``` – It may take a second, I was lowkey pressed because I didn't know if I was breaking everything. If you get a permission denied error: do 
+### Run ```./grant-write-access.sh```
+It may take a second, I was lowkey pressed because I didn't know if I was breaking everything. 
+
+### If you get a permission denied error: do 
 ```bash
 chmod +x grant-write-access.sh
 ```
 
-
-Badabing Badaboom the students should all have access to their repos again. Hopefully.
+Badabing Badaboom we ```bashed``` it till it worked (hehe), and the students should all have access to their repos again. Hopefully.
