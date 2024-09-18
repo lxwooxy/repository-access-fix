@@ -14,7 +14,7 @@ You'll need [GitHub CLI](https://docs.github.com/en/education/manage-coursework-
 
 We're going to be [adding collaborators](https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#add-a-repository-collaborator) using the API.
 
-You'll also want to find the affected assignment's ID, it was a lil 5 digit number:
+You'll also want to find the affected assignment's ID, it was a 5 digit number:
 ```bash
 gh classroom assignment
 ```
