@@ -90,7 +90,10 @@ wait
 ```
 Where each line corresponds to one user about to get their entire life changed, or at least get access to their on repository.
 
-### Run ```./grant-write-access.sh``` – It may take a second, I was lowkey pressed because I didn't know if I was breaking everything. If you get a permission denied error: do 
+### Run ```./grant-write-access.sh```
+It may take a second, I was lowkey pressed because I didn't know if I was breaking everything. 
+
+### If you get a permission denied error: do 
 ```bash
 chmod +x grant-write-access.sh
 ```
