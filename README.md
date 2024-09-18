@@ -5,8 +5,8 @@ Scripts to add students as collaborators back to their own Github Repositories, 
 
 When accepting an assignment on GitHub Classroom, students got a "Repository Access Issue" error, stating they no longer have access to their assignment repository. And to contact their teacher for support. But who are the teachers going to contact? Who is the me going to contact? (Thanks to the github community that also complained about this so I knew it wasn't just my fault)
 
-## The tea: 
-### The repositories were actually created, and still there in the organization. The students were just not collaborators on them.
+## The Tea: 
+### The repositories were actually created, and still there in the organization. The students were just not collaborators on them. How convenient.
 
 With < 10 students, it would probably not suck to add them back manually to give them write access to their own repositories. But everyone's studying CS nowadays. These are scripts to fix. I found most of this online/on other forums and modified it to get it to work for us. If you somehow find this first, hope it helps.
 
@@ -83,5 +83,4 @@ Run ```./grant-write-access.sh``` – It may take a second, I was lowkey pressed
 chmod +x grant-write-access.sh
 ```
 
-
-Badabing Badaboom the students should all have access to their repos again. Hopefully.
+Badabing Badaboom we ```bashed``` it till it worked (hehe), and the students should all have access to their repos again. Hopefully.
