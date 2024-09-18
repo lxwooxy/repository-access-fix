@@ -26,7 +26,7 @@ gh classroom assignments
 ```
 Keep that lil number safe we'll need it in a second.
 
-In this repo:
+## In this repo:
 - ```add-collaborator.py``` (probably dont have to change anything here)
 - ```find-collaborator.sh``` (update the format of the repo naming convention)
     - Under ```#Check if the user is a collaborator```, replace ```{repo}``` and ```{projectname}``` with your own organization naming style
