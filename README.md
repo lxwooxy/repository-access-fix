@@ -77,8 +77,7 @@ echo "wait" >> ${output_file}
 echo "The commands have been written to ${output_file}. You can run it to grant write access."
 ```
 
-### Then, call
-```./find-collaborator.sh```
+### Then, call ```./find-collaborator.sh```
 
 It should output the affected users. In our case, some were affected, and others not.
 
