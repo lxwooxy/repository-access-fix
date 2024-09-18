@@ -81,7 +81,13 @@ Then, call
 
 It should output the affected users. In our case, some were affected, and others not.
 
-A new file, ```grant-write-access.sh``` should be created. 
+A new file, ```grant-write-access.sh``` should be created. If you peek in it it should be something like:
+```
+gh api -X PUT /repos/{repo}/{projectname}-${user}/collaborators/${user} &
+gh api -X PUT /repos/{repo}/{projectname}-${user}/collaborators/${user} &
+wait
+```
+Where each line corresponds to one user about to get their entire life changed, or at least get access to their on repository.
 
 Run ```./grant-write-access.sh``` – It may take a second, I was lowkey pressed because I didn't know if I was breaking everything. If you get a permission denied error: do 
 ```bash
