@@ -33,7 +33,6 @@ Keep that lil number safe we'll need it in a second.
     - Change the values of ```repo_name``` and ```project_name``` to match your project template title
 ```bash
 #!/bin/bash
-#!/bin/bash
 assignmentID="$1"
 repo_name="my_org" # Change this to the organization name
 project_name="my_project" # Change this to the project title
