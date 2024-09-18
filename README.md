@@ -10,16 +10,21 @@ When accepting an assignment on GitHub Classroom, students got a "Repository Acc
 
 With < 10 students, it would probably not suck to add them back manually to give them write access to their own repositories. But everyone's studying CS nowadays. These are scripts to fix. I found most of this online/on other forums and modified it to get it to work for us. If you somehow find this first, hope it helps.
 
-You'll need [GitHub CLI](https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/using-github-classroom-with-github-cli)
+You'll need [GitHub CLI](https://docs.github.com/en/education/manage-coursework-with-github-classroom/teach-with-github-classroom/using-github-classroom-with-github-cli), maybe you're like me and [have to download it](https://github.com/cli/cli#installation).
 
-Maybe you're like me and [have to download it](https://github.com/cli/cli#installation)
-
-We're going to be [adding collaborators](https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#add-a-repository-collaborator) using the API
+We're going to be [adding collaborators](https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#add-a-repository-collaborator) using the API.
 
 You'll also want to find the affected assignment's ID, it was a lil 5 digit number:
 ```bash
 gh classroom assignment
 ```
+Use the arrow keys to navigate to the right assignment if you have a bunch of classrooms and assignments.
+
+Or you can also do:
+```bash
+gh classroom assignments
+```
+Keep that lil number safe we'll need it in a second.
 
 In this repo:
 - ```add-collaborator.py``` (probably dont have to change anything here)
